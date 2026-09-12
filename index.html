@@ -1,1 +1,2378 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#08051a">
+<title>สวนดอกไม้ของไวด้า 🌷</title>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Kanit:wght@300;400;500&display=swap');
+
+:root{
+    --bg:#070414;
+    --night:#0b0825;
+    --purple:#8d63ff;
+    --pink:#ff75c8;
+    --gold:#ffd98a;
+    --white:#fffaff;
+    --glass:rgba(255,255,255,.09);
+    --border:rgba(255,255,255,.18);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    background:#05030e;
+    color:white;
+    font-family:'Kanit',sans-serif;
+    font-weight:300;
+    touch-action:manipulation;
+}
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+button{
+    font-family:inherit;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at 50% 30%,rgba(103,76,190,.2),transparent 35%),
+        linear-gradient(180deg,#03020c 0%,#090621 55%,#100824 100%);
+    transition:
+        opacity 1.2s ease,
+        transform 1.5s cubic-bezier(.7,0,.2,1);
+}
+
+#intro.exit{
+    opacity:0;
+    transform:scale(1.15);
+    pointer-events:none;
+}
+
+.intro-content{
+    position:relative;
+    z-index:10;
+    width:min(90%,700px);
+    text-align:center;
+    animation:introAppear 2s ease both;
+}
+
+.intro-kicker{
+    color:#d9caff;
+    font-size:.85rem;
+    letter-spacing:4px;
+    margin-bottom:22px;
+    opacity:.75;
+}
+
+.intro-title{
+    font-family:'Itim',cursive;
+    font-size:clamp(2rem,7vw,4.8rem);
+    line-height:1.25;
+    text-shadow:
+        0 0 10px rgba(255,255,255,.3),
+        0 0 35px rgba(196,126,255,.5);
+}
+
+.intro-subtitle{
+    margin-top:18px;
+    color:#e8defd;
+    font-size:clamp(.85rem,2.8vw,1.1rem);
+    opacity:.72;
+}
+
+.open-btn{
+    margin-top:40px;
+    position:relative;
+    padding:15px 30px;
+    min-width:220px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:999px;
+    color:white;
+    cursor:pointer;
+    font-size:1rem;
+    background:
+        linear-gradient(
+            110deg,
+            rgba(145,99,255,.35),
+            rgba(255,104,199,.3)
+        );
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    box-shadow:
+        0 0 25px rgba(145,99,255,.25),
+        inset 0 0 20px rgba(255,255,255,.05);
+    transition:.35s ease;
+    overflow:hidden;
+}
+
+.open-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        100deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+    transform:translateX(-120%);
+    transition:.6s;
+}
+
+.open-btn:hover::before{
+    transform:translateX(120%);
+}
+
+.open-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:
+        0 0 40px rgba(194,117,255,.45),
+        inset 0 0 20px rgba(255,255,255,.08);
+}
+
+.open-btn:active{
+    transform:scale(.96);
+}
+
+.moon{
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    top:9%;
+    right:12%;
+    background:
+        radial-gradient(circle at 35% 30%,#fff,#eeeaff 35%,#bfb6e8 100%);
+    box-shadow:
+        0 0 30px rgba(255,255,255,.55),
+        0 0 100px rgba(174,147,255,.3);
+    opacity:.85;
+}
+
+.moon::before,
+.moon::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(130,119,170,.12);
+}
+
+.moon::before{
+    width:22px;
+    height:22px;
+    top:25px;
+    left:30px;
+}
+
+.moon::after{
+    width:15px;
+    height:15px;
+    right:25px;
+    bottom:30px;
+}
+
+.intro-haze{
+    position:absolute;
+    bottom:-20%;
+    left:-20%;
+    width:140%;
+    height:50%;
+    background:radial-gradient(
+        ellipse,
+        rgba(131,84,255,.2),
+        transparent 65%
+    );
+    filter:blur(30px);
+    animation:hazeMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes hazeMove{
+    from{transform:translateX(-3%)}
+    to{transform:translateX(3%)}
+}
+
+@keyframes introAppear{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+/* =====================================================
+   STARS
+===================================================== */
+
+#stars,
+#particles,
+#petals,
+#hearts{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 5px white;
+    animation:twinkle var(--duration) ease-in-out infinite;
+    animation-delay:var(--delay);
+}
+
+.star.big{
+    width:3px;
+    height:3px;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+        transform:scale(.7);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+/* =====================================================
+   GARDEN
+===================================================== */
+
+#garden{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    opacity:0;
+    transition:opacity 1.5s ease;
+    background:
+        radial-gradient(
+            ellipse at 50% 65%,
+            rgba(94,49,144,.5),
+            transparent 55%
+        ),
+        linear-gradient(
+            180deg,
+            #08051c 0%,
+            #10082b 48%,
+            #160a28 100%
+        );
+}
+
+#garden.active{
+    opacity:1;
+}
+
+.sky{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(132,105,255,.14),
+            transparent 25%
+        );
+}
+
+.garden-moon{
+    position:absolute;
+    top:7%;
+    right:10%;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#fff9e8;
+    box-shadow:
+        0 0 25px #fff,
+        0 0 80px rgba(206,189,255,.6);
+    opacity:.9;
+}
+
+.horizon{
+    position:absolute;
+    left:-10%;
+    bottom:20%;
+    width:120%;
+    height:35%;
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(100,62,133,.3),
+            transparent 60%
+        );
+    filter:blur(15px);
+}
+
+.mist{
+    position:absolute;
+    bottom:15%;
+    width:130%;
+    height:100px;
+    left:-15%;
+    border-radius:50%;
+    background:rgba(210,195,255,.05);
+    filter:blur(22px);
+    animation:mistMove 15s ease-in-out infinite alternate;
+}
+
+.mist.two{
+    bottom:27%;
+    animation-duration:20s;
+    opacity:.5;
+}
+
+@keyframes mistMove{
+    from{transform:translateX(-5%)}
+    to{transform:translateX(5%)}
+}
+
+/* =====================================================
+   GROUND
+===================================================== */
+
+.ground{
+    position:absolute;
+    left:-10%;
+    bottom:-12%;
+    width:120%;
+    height:48%;
+    border-radius:50% 50% 0 0;
+    background:
+        radial-gradient(
+            ellipse at center top,
+            #34204a 0%,
+            #1c1631 35%,
+            #0b0b18 80%
+        );
+    box-shadow:0 -20px 80px rgba(125,74,162,.18);
+}
+
+.grass{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:25%;
+    background:
+        linear-gradient(
+            170deg,
+            transparent 60%,
+            rgba(58,91,63,.45)
+        );
+}
+
+/* =====================================================
+   TREES
+===================================================== */
+
+.tree{
+    position:absolute;
+    bottom:27%;
+    width:120px;
+    height:200px;
+    opacity:.65;
+    transform-origin:bottom center;
+    animation:treeSway 6s ease-in-out infinite alternate;
+}
+
+.tree.left{
+    left:4%;
+}
+
+.tree.right{
+    right:3%;
+    transform:scale(.85);
+    animation-delay:-2s;
+}
+
+.trunk{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:18px;
+    height:100px;
+    transform:translateX(-50%);
+    border-radius:20px;
+    background:linear-gradient(90deg,#17101d,#3d2635,#17101d);
+}
+
+.tree-crown{
+    position:absolute;
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    top:15px;
+    left:10px;
+    background:
+        radial-gradient(circle at 30% 30%,#4f376d,#211532 70%);
+    box-shadow:0 0 30px rgba(106,73,154,.2);
+}
+
+.tree-crown::before,
+.tree-crown::after{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#27183b;
+}
+
+.tree-crown::before{
+    left:-28px;
+    top:35px;
+}
+
+.tree-crown::after{
+    right:-25px;
+    top:40px;
+}
+
+@keyframes treeSway{
+    from{transform:rotate(-1deg)}
+    to{transform:rotate(1deg)}
+}
+
+/* =====================================================
+   FLOWERS
+===================================================== */
+
+.flower{
+    position:absolute;
+    width:60px;
+    height:150px;
+    cursor:pointer;
+    z-index:8;
+    transform-origin:bottom center;
+    animation:
+        growFlower .9s cubic-bezier(.2,.8,.2,1) both,
+        flowerSway 5s ease-in-out infinite alternate;
+    animation-delay:var(--grow-delay),var(--sway-delay);
+    transition:filter .3s;
+}
+
+.flower:hover{
+    filter:
+        drop-shadow(0 0 12px rgba(255,135,221,.8));
+}
+
+.stem{
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:4px;
+    height:95px;
+    border-radius:5px;
+    transform:translateX(-50%);
+    background:linear-gradient(
+        90deg,
+        #182d20,
+        #47734a,
+        #182d20
+    );
+}
+
+.leaf{
+    position:absolute;
+    width:27px;
+    height:13px;
+    border-radius:100% 0 100% 0;
+    background:linear-gradient(135deg,#4f8c58,#1d422b);
+}
+
+.leaf.one{
+    left:4px;
+    bottom:45px;
+    transform:rotate(-25deg);
+}
+
+.leaf.two{
+    right:0;
+    bottom:60px;
+    transform:rotate(25deg) scaleX(-1);
+}
+
+.flower-head{
+    position:absolute;
+    top:15px;
+    left:50%;
+    width:45px;
+    height:45px;
+    transform:translateX(-50%);
+}
+
+.petal{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:22px;
+    height:32px;
+    border-radius:50% 50% 45% 45%;
+    transform-origin:50% 100%;
+    background:
+        radial-gradient(circle at 35% 30%,#fff,#ff8bd2 50%,#a644ad);
+    box-shadow:0 0 12px rgba(255,118,218,.4);
+}
+
+.petal:nth-child(1){transform:translate(-50%,-100%) rotate(0deg)}
+.petal:nth-child(2){transform:translate(-50%,-100%) rotate(72deg)}
+.petal:nth-child(3){transform:translate(-50%,-100%) rotate(144deg)}
+.petal:nth-child(4){transform:translate(-50%,-100%) rotate(216deg)}
+.petal:nth-child(5){transform:translate(-50%,-100%) rotate(288deg)}
+
+.flower-center{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    background:#ffe39a;
+    box-shadow:
+        0 0 10px #ffd76e,
+        0 0 22px rgba(255,213,111,.6);
+}
+
+@keyframes growFlower{
+    from{
+        transform:scaleY(0) translateY(40px);
+        opacity:0;
+    }
+    to{
+        transform:scaleY(1) translateY(0);
+        opacity:1;
+    }
+}
+
+@keyframes flowerSway{
+    from{margin-left:-3px}
+    to{margin-left:3px}
+}
+
+/* Special flower */
+
+.flower.special{
+    width:110px;
+    height:230px;
+    left:50%;
+    bottom:24%;
+    transform:translateX(-50%);
+    z-index:12;
+    animation:
+        specialGrow 1.6s cubic-bezier(.2,.8,.2,1) .8s both,
+        specialSway 6s ease-in-out 2.4s infinite alternate;
+}
+
+.flower.special .stem{
+    height:135px;
+    width:6px;
+}
+
+.flower.special .flower-head{
+    width:90px;
+    height:90px;
+    top:0;
+}
+
+.flower.special .petal{
+    width:43px;
+    height:62px;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff,
+            #ffb3e1 40%,
+            #8f49bd 90%
+        );
+    box-shadow:
+        0 0 20px rgba(255,141,226,.6);
+}
+
+.flower.special .flower-center{
+    width:25px;
+    height:25px;
+}
+
+.special-glow{
+    position:absolute;
+    left:50%;
+    top:38%;
+    width:150px;
+    height:150px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(255,175,231,.28),
+        transparent 65%
+    );
+    filter:blur(5px);
+    animation:pulseGlow 3s ease-in-out infinite;
+    pointer-events:none;
+}
+
+@keyframes specialGrow{
+    from{
+        opacity:0;
+        transform:translateX(-50%) scale(0);
+    }
+    to{
+        opacity:1;
+        transform:translateX(-50%) scale(1);
+    }
+}
+
+@keyframes specialSway{
+    from{transform:translateX(-50%) rotate(-2deg)}
+    to{transform:translateX(-50%) rotate(2deg)}
+}
+
+@keyframes pulseGlow{
+    0%,100%{opacity:.45;transform:translate(-50%,-50%) scale(.8)}
+    50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}
+}
+
+/* =====================================================
+   FIREFLIES
+===================================================== */
+
+.firefly{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#ffe89d;
+    box-shadow:
+        0 0 6px #ffe89d,
+        0 0 16px rgba(255,226,129,.8);
+    animation:
+        fireflyFloat var(--time) ease-in-out infinite alternate,
+        fireflyBlink var(--blink) ease-in-out infinite;
+    animation-delay:var(--delay);
+}
+
+@keyframes fireflyFloat{
+    from{transform:translate(0,0)}
+    to{transform:translate(var(--x),var(--y))}
+}
+
+@keyframes fireflyBlink{
+    0%,100%{opacity:.15}
+    50%{opacity:1}
+}
+
+/* =====================================================
+   BUTTERFLY
+===================================================== */
+
+.butterfly{
+    position:absolute;
+    width:35px;
+    height:30px;
+    left:15%;
+    top:35%;
+    z-index:7;
+    animation:butterflyPath 15s linear infinite;
+    opacity:.8;
+}
+
+.butterfly span{
+    position:absolute;
+    width:17px;
+    height:24px;
+    background:linear-gradient(135deg,#c7a6ff,#ff9cdd);
+    border-radius:70% 20% 70% 20%;
+    box-shadow:0 0 10px rgba(200,145,255,.5);
+}
+
+.butterfly span:first-child{
+    left:0;
+    transform:rotate(25deg);
+}
+
+.butterfly span:nth-child(2){
+    right:0;
+    transform:scaleX(-1) rotate(25deg);
+}
+
+.butterfly::after{
+    content:"";
+    position:absolute;
+    left:16px;
+    top:5px;
+    width:3px;
+    height:22px;
+    border-radius:3px;
+    background:#fff;
+}
+
+@keyframes butterflyPath{
+    0%{transform:translate(0,0) rotate(5deg)}
+    25%{transform:translate(25vw,8vh) rotate(-5deg)}
+    50%{transform:translate(50vw,-2vh) rotate(8deg)}
+    75%{transform:translate(30vw,20vh) rotate(-8deg)}
+    100%{transform:translate(75vw,5vh) rotate(5deg)}
+}
+
+/* =====================================================
+   PETALS
+===================================================== */
+
+.petal-fall{
+    position:absolute;
+    top:-30px;
+    width:8px;
+    height:13px;
+    border-radius:100% 0 100% 0;
+    background:linear-gradient(135deg,#ffb4df,#a75ab6);
+    opacity:.7;
+    animation:petalFall var(--fall-time) linear forwards;
+}
+
+@keyframes petalFall{
+    0%{
+        transform:translate3d(0,-30px,0) rotate(0deg);
+        opacity:0;
+    }
+    10%{opacity:.8}
+    100%{
+        transform:
+            translate3d(var(--drift),110vh,0)
+            rotate(600deg);
+        opacity:0;
+    }
+}
+
+/* =====================================================
+   HUD
+===================================================== */
+
+.garden-ui{
+    position:absolute;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:30;
+    width:min(92%,600px);
+    display:flex;
+    justify-content:center;
+    pointer-events:none;
+}
+
+.progress{
+    padding:10px 18px;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(12,8,28,.45);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-radius:999px;
+    font-size:.78rem;
+    color:#e9dcff;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.progress strong{
+    color:#ffd2ef;
+}
+
+/* =====================================================
+   MESSAGE MODAL
+===================================================== */
+
+#messageOverlay{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:rgba(4,2,13,.48);
+    backdrop-filter:blur(0);
+    -webkit-backdrop-filter:blur(0);
+    opacity:0;
+    pointer-events:none;
+    transition:.55s ease;
+}
+
+#messageOverlay.show{
+    opacity:1;
+    pointer-events:auto;
+    backdrop-filter:blur(9px);
+    -webkit-backdrop-filter:blur(9px);
+}
+
+.message-box{
+    position:relative;
+    width:min(92%,520px);
+    padding:35px 28px 30px;
+    text-align:center;
+    border:1px solid var(--border);
+    border-radius:28px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.045)
+        );
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4),
+        inset 0 1px rgba(255,255,255,.15);
+    transform:translateY(35px) scale(.92);
+    transition:.6s cubic-bezier(.2,.8,.2,1);
+}
+
+#messageOverlay.show .message-box{
+    transform:none;
+}
+
+.message-flower{
+    font-size:3rem;
+    filter:drop-shadow(0 0 15px rgba(255,130,218,.7));
+    animation:messageFlowerFloat 3s ease-in-out infinite;
+}
+
+@keyframes messageFlowerFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+.message-title{
+    margin-top:15px;
+    font-family:'Itim',cursive;
+    font-size:clamp(1.5rem,6vw,2.3rem);
+    color:#fff4fc;
+}
+
+.message-text{
+    margin-top:16px;
+    color:#eadff4;
+    line-height:1.9;
+    font-size:clamp(.9rem,3.5vw,1.05rem);
+}
+
+.close-message{
+    margin-top:24px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    padding:10px 22px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.close-message:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateY(-2px);
+}
+
+/* =====================================================
+   CLICK HEARTS
+===================================================== */
+
+.click-heart{
+    position:fixed;
+    z-index:90;
+    pointer-events:none;
+    font-size:14px;
+    animation:heartRise 1.2s ease-out forwards;
+}
+
+@keyframes heartRise{
+    from{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(.7);
+    }
+    to{
+        opacity:0;
+        transform:
+            translate(
+                calc(-50% + var(--heart-x)),
+                calc(-50% - 90px)
+            )
+            scale(1.4);
+    }
+}
+
+/* =====================================================
+   FINAL SCENE
+===================================================== */
+
+#finalScene{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,195,116,.18),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #130b2b,
+            #2b1638,
+            #12091e
+        );
+    transition:
+        opacity 1.8s ease,
+        visibility 1.8s ease;
+}
+
+#finalScene.show{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.final-content{
+    width:min(92%,720px);
+    text-align:center;
+    transform:translateY(25px);
+    transition:2s ease;
+}
+
+#finalScene.show .final-content{
+    transform:none;
+}
+
+.final-flower{
+    font-size:clamp(3rem,15vw,7rem);
+    filter:
+        drop-shadow(0 0 20px rgba(255,188,114,.9))
+        drop-shadow(0 0 60px rgba(255,126,210,.5));
+    animation:finalFlower 3s ease-in-out infinite;
+}
+
+@keyframes finalFlower{
+    0%,100%{transform:scale(1) rotate(-2deg)}
+    50%{transform:scale(1.08) rotate(2deg)}
+}
+
+.final-name{
+    margin-top:10px;
+    font-family:'Itim',cursive;
+    font-size:clamp(3rem,15vw,6rem);
+    color:#fff5db;
+    text-shadow:
+        0 0 15px rgba(255,226,164,.7),
+        0 0 50px rgba(255,161,216,.4);
+}
+
+.final-subtitle{
+    margin-top:5px;
+    font-family:'Itim',cursive;
+    font-size:clamp(1.4rem,6vw,2.5rem);
+    color:#ffe1ef;
+}
+
+.typewriter-wrap{
+    margin:35px auto 0;
+    width:min(100%,650px);
+    min-height:150px;
+    padding:24px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.2),
+        inset 0 1px rgba(255,255,255,.1);
+}
+
+.typewriter{
+    color:#f8eef9;
+    line-height:2;
+    font-size:clamp(.9rem,3.5vw,1.15rem);
+}
+
+.cursor{
+    display:inline-block;
+    width:2px;
+    height:1.1em;
+    background:#fff;
+    vertical-align:middle;
+    animation:cursorBlink .7s infinite;
+}
+
+@keyframes cursorBlink{
+    50%{opacity:0}
+}
+
+.final-thanks{
+    margin-top:28px;
+    color:#fff1d4;
+    font-family:'Itim',cursive;
+    font-size:clamp(1.1rem,4vw,1.5rem);
+    opacity:0;
+    transform:translateY(15px);
+    transition:1s ease;
+}
+
+.final-thanks.show{
+    opacity:1;
+    transform:none;
+}
+
+.replay{
+    margin-top:25px;
+    padding:10px 22px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.18);
+    color:white;
+    background:rgba(255,255,255,.07);
+    cursor:pointer;
+    opacity:0;
+    transition:.3s;
+}
+
+.replay.show{
+    opacity:1;
+}
+
+.replay:hover{
+    background:rgba(255,255,255,.15);
+}
+
+/* =====================================================
+   GOLD PARTICLES FINAL
+===================================================== */
+
+.gold-particle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#ffe3a4;
+    box-shadow:0 0 10px #ffe3a4;
+    animation:goldFloat var(--duration) ease-in-out infinite;
+    animation-delay:var(--delay);
+}
+
+@keyframes goldFloat{
+    0%,100%{
+        transform:translateY(30px) scale(.5);
+        opacity:0;
+    }
+    50%{
+        transform:translateY(-80px) scale(1);
+        opacity:.9;
+    }
+}
+
+/* =====================================================
+   SHOOTING STAR
+===================================================== */
+
+.shooting-star{
+    position:absolute;
+    width:90px;
+    height:2px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        white
+    );
+    transform:rotate(-30deg);
+    animation:shoot 1.2s linear forwards;
+    opacity:0;
+}
+
+@keyframes shoot{
+    0%{
+        opacity:0;
+        transform:translate(0,0) rotate(-30deg);
+    }
+    10%{opacity:1}
+    100%{
+        opacity:0;
+        transform:translate(-300px,300px) rotate(-30deg);
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .moon{
+        width:85px;
+        height:85px;
+        top:8%;
+        right:8%;
+    }
+
+    .garden-moon{
+        width:65px;
+        height:65px;
+        right:8%;
+    }
+
+    .tree{
+        transform:scale(.65);
+        bottom:25%;
+    }
+
+    .tree.right{
+        transform:scale(.55);
+    }
+
+    .flower{
+        transform:scale(.78);
+    }
+
+    .flower.special{
+        transform:translateX(-50%) scale(.85);
+    }
+
+    .flower.special:hover{
+        transform:translateX(-50%) scale(.9);
+    }
+
+    .ground{
+        height:42%;
+        bottom:-10%;
+    }
+
+    .typewriter-wrap{
+        padding:18px;
+        min-height:170px;
+    }
+
+    .message-box{
+        padding:30px 20px 25px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.001ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section id="intro">
+
+    <div id="introStars"></div>
+
+    <div class="moon"></div>
+
+    <div class="intro-haze"></div>
+
+    <div class="intro-content">
+
+        <div class="intro-kicker">
+            A LITTLE GARDEN MADE FOR YOU
+        </div>
+
+        <h1 class="intro-title">
+            มีดอกไม้บางดอก...<br>
+            ที่อยากมอบให้ไวด้า
+        </h1>
+
+        <p class="intro-subtitle">
+            แต่ดอกไม้ดอกเดียวมันดูธรรมดาเกินไป
+        </p>
+
+        <button class="open-btn" id="openGarden">
+            เปิดสวนดอกไม้ 🌷
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GARDEN
+===================================================== -->
+
+<main id="garden">
+
+    <div class="sky"></div>
+
+    <div id="stars"></div>
+
+    <div class="garden-moon"></div>
+
+    <div class="horizon"></div>
+
+    <div class="mist"></div>
+    <div class="mist two"></div>
+
+    <div class="tree left">
+        <div class="tree-crown"></div>
+        <div class="trunk"></div>
+    </div>
+
+    <div class="tree right">
+        <div class="tree-crown"></div>
+        <div class="trunk"></div>
+    </div>
+
+    <div class="butterfly">
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="fireflies"></div>
+
+    <div class="ground">
+        <div class="grass"></div>
+    </div>
+
+    <div id="flowers"></div>
+
+    <div class="flower special" id="specialFlower">
+
+        <div class="special-glow"></div>
+
+        <div class="flower-head">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="flower-center"></div>
+
+        </div>
+
+        <div class="stem"></div>
+
+        <div class="leaf one"></div>
+        <div class="leaf two"></div>
+
+    </div>
+
+    <div id="petals"></div>
+
+    <div class="garden-ui">
+        <div class="progress">
+            พบดอกไม้แล้ว
+            <strong id="flowerCount">0 / 4</strong>
+        </div>
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     MESSAGE
+===================================================== -->
+
+<div id="messageOverlay">
+
+    <div class="message-box">
+
+        <div class="message-flower">
+            🌷
+        </div>
+
+        <h2 class="message-title" id="messageTitle">
+            ดอกไม้แห่งความลับ
+        </h2>
+
+        <p class="message-text" id="messageText"></p>
+
+        <button class="close-message" id="closeMessage">
+            ปิดหน้าต่าง
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FINAL SCENE
+===================================================== -->
+
+<section id="finalScene">
+
+    <div id="goldParticles"></div>
+
+    <div class="final-content">
+
+        <div class="final-flower">
+            🌷
+        </div>
+
+        <h1 class="final-name">
+            ไวด้า
+        </h1>
+
+        <div class="final-subtitle">
+            ดอกไม้ทั้งหมดนี้ให้เธอ
+        </div>
+
+        <div class="typewriter-wrap">
+
+            <div class="typewriter" id="typewriter"></div>
+
+        </div>
+
+        <div class="final-thanks" id="finalThanks">
+            ขอบคุณที่เข้ามาเป็นรอยยิ้มในวันธรรมดาของเรา 🤍
+        </div>
+
+        <button class="replay" id="replay">
+            🌙 เปิดสวนอีกครั้ง
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+/* =====================================================
+   MAGICAL GARDEN
+   Vanilla JavaScript
+===================================================== */
+
+(() => {
+
+    "use strict";
+
+    /* =================================================
+       DOM
+    ================================================= */
+
+    const intro = document.getElementById("intro");
+    const garden = document.getElementById("garden");
+
+    const openGarden = document.getElementById("openGarden");
+
+    const introStars = document.getElementById("introStars");
+    const stars = document.getElementById("stars");
+    const fireflies = document.getElementById("fireflies");
+    const flowersContainer = document.getElementById("flowers");
+    const petals = document.getElementById("petals");
+
+    const specialFlower = document.getElementById("specialFlower");
+
+    const messageOverlay = document.getElementById("messageOverlay");
+    const messageTitle = document.getElementById("messageTitle");
+    const messageText = document.getElementById("messageText");
+    const closeMessage = document.getElementById("closeMessage");
+
+    const flowerCount = document.getElementById("flowerCount");
+
+    const finalScene = document.getElementById("finalScene");
+    const goldParticles = document.getElementById("goldParticles");
+
+    const typewriter = document.getElementById("typewriter");
+    const finalThanks = document.getElementById("finalThanks");
+    const replay = document.getElementById("replay");
+
+
+    /* =================================================
+       STATE
+    ================================================= */
+
+    const state = {
+        opened: false,
+        discovered: new Set(),
+        maxParticles: window.innerWidth < 600 ? 24 : 42,
+        petalsRunning: true,
+        finalUnlocked: false
+    };
+
+
+    /* =================================================
+       FLOWER DATA
+    ================================================= */
+
+    const flowerMessages = [
+
+        {
+            id: 1,
+            title: "ดอกไม้ดอกแรก 🌸",
+            text:
+            "รู้ไหมว่าทำไมสวนนี้ถึงมีดอกไม้เยอะจัง"
+        },
+
+        {
+            id: 2,
+            title: "ดอกไม้ดอกที่สอง 🌷",
+            text:
+            "เพราะแค่ดอกเดียวมันคงไม่พอสำหรับคนพิเศษ"
+        },
+
+        {
+            id: 3,
+            title: "ดอกไม้ดอกที่สาม 🌺",
+            text:
+            "บางครั้งการได้คุยกับใครสักคน ก็ทำให้วันธรรมดาน่ารักขึ้นมาได้"
+        },
+
+        {
+            id: 4,
+            title: "ดอกไม้ดอกที่สี่ 🌼",
+            text:
+            "และคนนั้น... คือไวด้า 🌸"
+        }
+
+    ];
+
+
+    /* =================================================
+       UTILITIES
+    ================================================= */
+
+    const random = (min, max) =>
+        Math.random() * (max - min) + min;
+
+    const randomInt = (min, max) =>
+        Math.floor(random(min, max + 1));
+
+
+    /* =================================================
+       STAR SYSTEM
+    ================================================= */
+
+    function createStars(container, amount) {
+
+        const fragment = document.createDocumentFragment();
+
+        for(let i = 0; i < amount; i++){
+
+            const star = document.createElement("span");
+
+            star.className =
+                "star" +
+                (Math.random() > .82 ? " big" : "");
+
+            star.style.left = random(1,99) + "%";
+            star.style.top = random(1,70) + "%";
+
+            star.style.setProperty(
+                "--duration",
+                random(2,6) + "s"
+            );
+
+            star.style.setProperty(
+                "--delay",
+                random(-6,0) + "s"
+            );
+
+            fragment.appendChild(star);
+        }
+
+        container.appendChild(fragment);
+    }
+
+
+    createStars(introStars, 100);
+    createStars(stars, 85);
+
+
+    /* =================================================
+       FIREFLY SYSTEM
+    ================================================= */
+
+    function createFireflies() {
+
+        const fragment = document.createDocumentFragment();
+
+        const amount =
+            window.innerWidth < 600 ? 20 : 34;
+
+        for(let i = 0; i < amount; i++){
+
+            const fly = document.createElement("span");
+
+            fly.className = "firefly";
+
+            fly.style.left = random(3,97) + "%";
+            fly.style.top = random(28,78) + "%";
+
+            fly.style.setProperty(
+                "--x",
+                random(-80,80) + "px"
+            );
+
+            fly.style.setProperty(
+                "--y",
+                random(-80,80) + "px"
+            );
+
+            fly.style.setProperty(
+                "--time",
+                random(3,8) + "s"
+            );
+
+            fly.style.setProperty(
+                "--blink",
+                random(1.5,4) + "s"
+            );
+
+            fly.style.setProperty(
+                "--delay",
+                random(-8,0) + "s"
+            );
+
+            fragment.appendChild(fly);
+        }
+
+        fireflies.appendChild(fragment);
+    }
+
+
+    /* =================================================
+       FLOWER SYSTEM
+    ================================================= */
+
+    function createFlower(data, index){
+
+        const flower =
+            document.createElement("div");
+
+        flower.className = "flower";
+
+        flower.dataset.id = data.id;
+
+        flower.style.left =
+            random(8,92) + "%";
+
+        flower.style.bottom =
+            random(22,36) + "%";
+
+        flower.style.setProperty(
+            "--grow-delay",
+            (index * .35) + "s"
+        );
+
+        flower.style.setProperty(
+            "--sway-delay",
+            random(-5,0) + "s"
+        );
+
+        flower.innerHTML = `
+            <div class="flower-head">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+
+            <div class="stem"></div>
+
+            <div class="leaf one"></div>
+            <div class="leaf two"></div>
+        `;
+
+        flower.addEventListener(
+            "click",
+            (event) => {
+
+                event.stopPropagation();
+
+                discoverFlower(data, flower);
+
+                createClickHearts(
+                    event.clientX,
+                    event.clientY
+                );
+
+            }
+        );
+
+        flowersContainer.appendChild(flower);
+    }
+
+
+    function createFlowers(){
+
+        flowerMessages.forEach(
+            (data,index) => {
+                createFlower(data,index);
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       FLOWER INTERACTION
+    ================================================= */
+
+    function discoverFlower(data, element){
+
+        if(!state.discovered.has(data.id)){
+
+            state.discovered.add(data.id);
+
+            element.style.filter =
+                "drop-shadow(0 0 18px rgba(255,150,225,.95))";
+
+            updateProgress();
+
+        }
+
+        showMessage(
+            data.title,
+            data.text
+        );
+
+    }
+
+
+    function updateProgress(){
+
+        flowerCount.textContent =
+            `${state.discovered.size} / ${flowerMessages.length}`;
+
+        if(
+            state.discovered.size ===
+            flowerMessages.length
+        ){
+
+            setTimeout(
+                unlockFinalScene,
+                900
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       MESSAGE SYSTEM
+    ================================================= */
+
+    function showMessage(title,text){
+
+        messageTitle.textContent = title;
+        messageText.textContent = text;
+
+        messageOverlay.classList.add("show");
+
+    }
+
+
+    function hideMessage(){
+
+        messageOverlay.classList.remove("show");
+
+    }
+
+
+    closeMessage.addEventListener(
+        "click",
+        hideMessage
+    );
+
+
+    messageOverlay.addEventListener(
+        "click",
+        (event) => {
+
+            if(event.target === messageOverlay){
+
+                hideMessage();
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       PETAL SYSTEM
+    ================================================= */
+
+    function createPetal(){
+
+        if(!state.petalsRunning) return;
+
+        const current =
+            petals.children.length;
+
+        if(current >= state.maxParticles) return;
+
+        const petal =
+            document.createElement("span");
+
+        petal.className = "petal-fall";
+
+        petal.style.left =
+            random(0,100) + "%";
+
+        petal.style.setProperty(
+            "--drift",
+            random(-180,180) + "px"
+        );
+
+        petal.style.setProperty(
+            "--fall-time",
+            random(7,13) + "s"
+        );
+
+        petals.appendChild(petal);
+
+        petal.addEventListener(
+            "animationend",
+            () => petal.remove()
+        );
+
+    }
+
+
+    let petalTimer;
+
+    function startPetals(){
+
+        clearInterval(petalTimer);
+
+        petalTimer =
+            setInterval(
+                createPetal,
+                900
+            );
+
+    }
+
+
+    /* =================================================
+       SHOOTING STAR
+    ================================================= */
+
+    function shootingStar(){
+
+        if(!state.opened) return;
+
+        const star =
+            document.createElement("div");
+
+        star.className =
+            "shooting-star";
+
+        star.style.left =
+            random(60,100) + "%";
+
+        star.style.top =
+            random(5,35) + "%";
+
+        stars.appendChild(star);
+
+        star.addEventListener(
+            "animationend",
+            () => star.remove()
+        );
+
+    }
+
+
+    setInterval(
+        shootingStar,
+        9000
+    );
+
+
+    /* =================================================
+       CLICK HEART SYSTEM
+    ================================================= */
+
+    let activeHearts = 0;
+
+    function createClickHearts(x,y){
+
+        if(activeHearts >= 12) return;
+
+        const heart =
+            document.createElement("span");
+
+        heart.className =
+            "click-heart";
+
+        const icons =
+            ["♥","♡","✦","✧"];
+
+        heart.textContent =
+            icons[randomInt(0,icons.length-1)];
+
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+
+        heart.style.setProperty(
+            "--heart-x",
+            random(-40,40) + "px"
+        );
+
+        document.body.appendChild(heart);
+
+        activeHearts++;
+
+        heart.addEventListener(
+            "animationend",
+            () => {
+
+                heart.remove();
+                activeHearts--;
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       GARDEN CLICK PARTICLE
+    ================================================= */
+
+    garden.addEventListener(
+        "click",
+        (event) => {
+
+            if(
+                event.target.closest(".flower") ||
+                event.target.closest(".garden-ui")
+            ) return;
+
+            createClickHearts(
+                event.clientX,
+                event.clientY
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       OPEN GARDEN
+    ================================================= */
+
+    openGarden.addEventListener(
+        "click",
+        () => {
+
+            if(state.opened) return;
+
+            state.opened = true;
+
+            intro.classList.add("exit");
+
+            setTimeout(
+                () => {
+
+                    garden.classList.add("active");
+
+                    createFlowers();
+                    createFireflies();
+                    startPetals();
+
+                },
+                650
+            );
+
+            setTimeout(
+                () => {
+
+                    intro.style.display = "none";
+
+                },
+                1600
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       SPECIAL FLOWER
+    ================================================= */
+
+    specialFlower.addEventListener(
+        "click",
+        (event) => {
+
+            event.stopPropagation();
+
+            createClickHearts(
+                event.clientX,
+                event.clientY
+            );
+
+            showMessage(
+                "ดอกไม้ของไวด้า 🌷",
+                "ดอกไม้นี้อาจอยู่ได้ไม่นาน...\n\nแต่ความรู้สึกดี ๆ ที่มีให้ไวด้า อยากให้มันอยู่นานกว่านั้นนะ 🌷"
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       FINAL SCENE
+    ================================================= */
+
+    function unlockFinalScene(){
+
+        if(state.finalUnlocked) return;
+
+        state.finalUnlocked = true;
+
+        hideMessage();
+
+        state.petalsRunning = false;
+
+        clearInterval(petalTimer);
+
+        /*
+         * ให้ดอกไม้ทุกดอกสว่างขึ้น
+         */
+
+        document
+            .querySelectorAll(".flower")
+            .forEach(
+                (flower,index) => {
+
+                    flower.style.filter =
+                        "drop-shadow(0 0 20px rgba(255,180,225,.9))";
+
+                    flower.style.animationDelay =
+                        (index * .12) + "s";
+
+                }
+            );
+
+        /*
+         * Cinematic delay
+         */
+
+        setTimeout(
+            () => {
+
+                finalScene.classList.add("show");
+
+                createGoldParticles();
+
+                startTypewriter();
+
+            },
+            1200
+        );
+
+    }
+
+
+    /* =================================================
+       GOLD PARTICLE SYSTEM
+    ================================================= */
+
+    function createGoldParticles(){
+
+        goldParticles.innerHTML = "";
+
+        const amount =
+            window.innerWidth < 600 ? 25 : 45;
+
+        const fragment =
+            document.createDocumentFragment();
+
+        for(let i=0;i<amount;i++){
+
+            const particle =
+                document.createElement("span");
+
+            particle.className =
+                "gold-particle";
+
+            particle.style.left =
+                random(2,98) + "%";
+
+            particle.style.top =
+                random(35,95) + "%";
+
+            particle.style.setProperty(
+                "--duration",
+                random(3,7) + "s"
+            );
+
+            particle.style.setProperty(
+                "--delay",
+                random(-7,0) + "s"
+            );
+
+            fragment.appendChild(
+                particle
+            );
+
+        }
+
+        goldParticles.appendChild(
+            fragment
+        );
+
+    }
+
+
+    /* =================================================
+       TYPEWRITER
+    ================================================= */
+
+    const finalMessage =
+        "เราอาจยังไม่รู้ว่าความสัมพันธ์ของเราจะไปถึงไหน\n\nแต่ตอนนี้... เราดีใจนะที่ได้รู้จักไวด้า";
+
+    let typeTimer = null;
+
+    function startTypewriter(){
+
+        clearInterval(typeTimer);
+
+        typewriter.innerHTML =
+            '<span class="cursor"></span>';
+
+        finalThanks.classList.remove("show");
+        replay.classList.remove("show");
+
+        let index = 0;
+
+        typeTimer =
+            setInterval(
+                () => {
+
+                    if(index >= finalMessage.length){
+
+                        clearInterval(typeTimer);
+
+                        setTimeout(
+                            () => {
+
+                                finalThanks.classList.add(
+                                    "show"
+                                );
+
+                            },
+                            700
+                        );
+
+                        setTimeout(
+                            () => {
+
+                                replay.classList.add(
+                                    "show"
+                                );
+
+                            },
+                            1800
+                        );
+
+                        return;
+                    }
+
+                    const char =
+                        finalMessage[index];
+
+                    const cursor =
+                        typewriter.querySelector(
+                            ".cursor"
+                        );
+
+                    if(char === "\n"){
+
+                        cursor.insertAdjacentHTML(
+                            "beforebegin",
+                            "<br>"
+                        );
+
+                    }else{
+
+                        cursor.insertAdjacentText(
+                            "beforebegin",
+                            char
+                        );
+
+                    }
+
+                    index++;
+
+                },
+                55
+            );
+
+    }
+
+
+    /* =================================================
+       REPLAY
+    ================================================= */
+
+    replay.addEventListener(
+        "click",
+        () => {
+
+            clearInterval(typeTimer);
+
+            finalScene.classList.remove(
+                "show"
+            );
+
+            setTimeout(
+                () => {
+
+                    state.discovered.clear();
+                    state.finalUnlocked = false;
+                    state.opened = false;
+
+                    flowerCount.textContent =
+                        "0 / 4";
+
+                    flowersContainer.innerHTML = "";
+
+                    petals.innerHTML = "";
+
+                    finalThanks.classList.remove(
+                        "show"
+                    );
+
+                    replay.classList.remove(
+                        "show"
+                    );
+
+                    intro.style.display = "flex";
+
+                    requestAnimationFrame(
+                        () => {
+
+                            intro.classList.remove(
+                                "exit"
+                            );
+
+                        }
+                    );
+
+                },
+                900
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       PARALLAX EFFECT
+    ================================================= */
+
+    let pointerX = 0;
+    let pointerY = 0;
+
+    function updateParallax(){
+
+        if(!state.opened) return;
+
+        const x =
+            (pointerX - window.innerWidth / 2)
+            / window.innerWidth;
+
+        const y =
+            (pointerY - window.innerHeight / 2)
+            / window.innerHeight;
+
+        const moon =
+            document.querySelector(".garden-moon");
+
+        const trees =
+            document.querySelectorAll(".tree");
+
+        if(moon){
+
+            moon.style.transform =
+                `translate(${x * 10}px,${y * 8}px)`;
+
+        }
+
+        trees.forEach(
+            (tree,index) => {
+
+                const amount =
+                    index === 0 ? 8 : -8;
+
+                tree.style.marginLeft =
+                    `${x * amount}px`;
+
+            }
+        );
+
+    }
+
+
+    window.addEventListener(
+        "pointermove",
+        (event) => {
+
+            pointerX = event.clientX;
+            pointerY = event.clientY;
+
+            requestAnimationFrame(
+                updateParallax
+            );
+
+        },
+        {passive:true}
+    );
+
+
+    /* =================================================
+       TOUCH SUPPORT
+    ================================================= */
+
+    window.addEventListener(
+        "touchstart",
+        (event) => {
+
+            const touch =
+                event.touches[0];
+
+            if(!touch) return;
+
+            createClickHearts(
+                touch.clientX,
+                touch.clientY
+            );
+
+        },
+        {passive:true}
+    );
+
+
+    /* =================================================
+       RESIZE OPTIMIZATION
+    ================================================= */
+
+    let resizeTimer;
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            clearTimeout(resizeTimer);
+
+            resizeTimer =
+                setTimeout(
+                    () => {
+
+                        state.maxParticles =
+                            window.innerWidth < 600
+                            ? 24
+                            : 42;
+
+                    },
+                    200
+                );
+
+        },
+        {passive:true}
+    );
+
+
+    /* =================================================
+       KEYBOARD SUPPORT
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if(event.key === "Escape"){
+
+                hideMessage();
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       INITIALIZATION
+    ================================================= */
+
+    function init(){
+
+        /*
+         * ไม่เปิดเสียงอัตโนมัติ
+         * เพราะ browser ส่วนใหญ่ block autoplay
+         */
+
+        state.opened = false;
+
+        console.log(
+            "🌷 Magical Garden for Waida initialized."
+        );
+
+    }
+
+
+    init();
+
+})();
+</script>
+
+</body>
+  </html>
